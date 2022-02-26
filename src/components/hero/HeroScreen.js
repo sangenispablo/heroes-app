@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { useParams, Navigate, useNavigate } from "react-router-dom";
 import { getHeroesById } from "../../helpers/getHeroesById";
+import { heroImages } from "../../helpers/heroImages";
 
 export const HeroScreen = () => {
   const { id } = useParams();
@@ -21,7 +22,9 @@ export const HeroScreen = () => {
   const { alter_ego, characters, first_appearance, publisher, superhero } =
     hero;
 
-  const imgPath = `/assets/${hero.id}.jpg`;
+  // const imgPath = `/assets/${hero.id}.jpg`;
+  // const imgPath = heroImages(`./${hero.id}.jpg`);
+  const imgPath = heroImages(hero.id);
 
   return (
     <div className="row mt-5">

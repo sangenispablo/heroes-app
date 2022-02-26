@@ -11,11 +11,17 @@ export const LoginScreen = () => {
     const action = {
       type: types.login,
       payload: {
-        name: "Pablo Logeado",
+        name: "Pablo Sangenis",
       },
     };
     dispatch(action);
-    navigate("/marvel", { replace: true });
+
+    // Saco el ultimo path visitado que guardé en el LS
+    const { pathname, search } = JSON.parse(localStorage.getItem('lastPath'));
+
+    const lastPath = pathname ? pathname + (search || '') : '/marvel';
+
+    navigate(lastPath, { replace: true });
   };
 
   return (
